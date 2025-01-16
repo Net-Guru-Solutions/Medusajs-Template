@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useSignInWithEmailPass } from '@/app/api/medusa/auth/action'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -27,7 +28,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="container mx-auto flex items-center justify-center min-h-screen bg-gray-100">
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Login to FrontlineMilitary POS</CardTitle>
@@ -37,9 +38,9 @@ export default function LoginPage() {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="email">Email</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
+                <Input
+                  id="email"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -47,8 +48,8 @@ export default function LoginPage() {
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="password">Password</Label>
-                <Input 
-                  id="password" 
+                <Input
+                  id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

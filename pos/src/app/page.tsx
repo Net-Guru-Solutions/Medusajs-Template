@@ -16,6 +16,6 @@ export default function Home() {
         }
     }, [user, router])
 
-    return null // or a loading indicator
+    return null
 }
 
