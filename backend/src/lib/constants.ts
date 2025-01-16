@@ -100,6 +100,11 @@ export const MEILISEARCH_HOST = process.env.MEILISEARCH_HOST;
 export const MEILISEARCH_API_KEY = process.env.MEILISEARCH_API_KEY;
 
 /**
+ * (optional) Shipstation API Key
+ */
+export const SHIPSTATION_API_KEY = process.env.SHIPSTATION_API_KEY;
+
+/**
  * Worker mode
  */
 export const WORKER_MODE =
