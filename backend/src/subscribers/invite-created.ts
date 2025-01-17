@@ -1,5 +1,5 @@
-import { INotificationModuleService, IUserModuleService } from '@medusajs/types'
-import { Modules } from '@medusajs/utils'
+import { INotificationModuleService, IUserModuleService } from '@medusajs/framework/types'
+import { Modules } from '@medusajs/framework/utils'
 import { SubscriberArgs, SubscriberConfig } from '@medusajs/framework'
 import { BACKEND_URL } from '../lib/constants'
 import { EmailTemplates } from '../modules/email-notifications/templates'
@@ -22,7 +22,7 @@ export default async function userInviteHandler({
       template: EmailTemplates.INVITE_USER,
       data: {
         emailOptions: {
-          replyTo: 'info@frontlinemilitary.co.uk',
+          replyTo: 'info@example.com',
           subject: "You've been invited to Frontline!"
         },
         inviteLink: `${BACKEND_URL}/app/invite?token=${invite.token}`,

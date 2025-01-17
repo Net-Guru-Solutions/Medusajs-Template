@@ -33,31 +33,31 @@ export const isInviteUserData = (data: any): data is InviteUserEmailProps =>
  */
 export const InviteUserEmail = ({
   inviteLink,
-  preview = `You've been invited to Medusa!`,
+  preview = `You've been invited to Frontline!`,
 }: InviteUserEmailProps) => {
   return (
     <Base preview={preview}>
-      <Section className="mt-[32px] mb-[32px]">
+      <Section className="mt-[32px]">
         <Img
-          src="https://placeholder.svg?height=80&width=300"
-          alt="Frontline Military"
-          className="mx-auto h-20"
+          src="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg"
+          alt="Medusa"
+          className="mx-auto w-28"
         />
       </Section>
       <Section className="text-center">
-        <Text className="text-gray-800 text-[18px] leading-[28px] font-semibold">
-          You've been invited to join Frontline Military as an administrator.
+        <Text className="text-black text-[14px] leading-[24px]">
+          You&apos;ve been invited to be an administrator on <strong>Frontline Military</strong>.
         </Text>
-        <Section className="mt-6 mb-[32px]">
+        <Section className="mt-4 mb-[32px]">
           <Button
-            className="bg-blue-600 rounded text-white text-[14px] font-semibold no-underline px-6 py-3 hover:bg-blue-700 transition-colors"
+            className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline px-5 py-3"
             href={inviteLink}
           >
             Accept Invitation
           </Button>
         </Section>
-        <Text className="text-gray-600 text-[14px] leading-[24px]">
-          Or copy and paste this URL into your browser:
+        <Text className="text-black text-[14px] leading-[24px]">
+          or copy and paste this URL into your browser:
         </Text>
         <Text style={{
           maxWidth: '100%',
@@ -66,20 +66,17 @@ export const InviteUserEmail = ({
         }}>
           <Link
             href={inviteLink}
-            className="text-blue-600 no-underline hover:underline"
+            className="text-blue-600 no-underline"
           >
             {inviteLink}
           </Link>
         </Text>
       </Section>
-      <Hr className="border border-solid border-gray-300 my-[26px] mx-0 w-full" />
-      <Text className="text-gray-600 text-[12px] leading-[20px]">
+      <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
+      <Text className="text-[#666666] text-[12px] leading-[24px]">
         If you were not expecting this invitation, you can ignore this email, as the
-        invitation will expire in 24 hours. If you are concerned about your account's safety
-        or have any questions, please contact Net Guru Solutions at{' '}
-        <Link href="mailto:info@netgurusolutions.co.uk" className="text-blue-600 no-underline hover:underline">
-          info@netgurusolutions.co.uk
-        </Link>.
+        invitation will expire in 24 hours. If you are concerned about your account's safety,
+        please reply to this email to get in touch with us.
       </Text>
     </Base>
   )

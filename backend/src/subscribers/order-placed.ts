@@ -1,5 +1,5 @@
-import { Modules } from '@medusajs/utils'
-import { INotificationModuleService, IOrderModuleService } from '@medusajs/types'
+import { Modules } from '@medusajs/framework/utils'
+import { INotificationModuleService, IOrderModuleService } from '@medusajs/framework/types'
 import { SubscriberArgs, SubscriberConfig } from '@medusajs/medusa'
 import { EmailTemplates } from '../modules/email-notifications/templates'
 
@@ -20,7 +20,7 @@ export default async function orderPlacedHandler({
       template: EmailTemplates.ORDER_PLACED,
       data: {
         emailOptions: {
-          replyTo: 'info@frontlinemilitary.co.uk',
+          replyTo: 'info@example.com',
           subject: 'Your order has been placed'
         },
         order,
