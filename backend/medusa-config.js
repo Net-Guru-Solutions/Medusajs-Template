@@ -21,7 +21,8 @@ import {
   MINIO_SECRET_KEY,
   MINIO_BUCKET,
   MEILISEARCH_HOST,
-  MEILISEARCH_API_KEY
+  MEILISEARCH_API_KEY,
+  SHIPSTATION_API_KEY
 } from 'lib/constants';
 
 loadEnv(process.env.NODE_ENV, process.cwd());
@@ -145,6 +146,24 @@ const medusaConfig = {
           }
         }
       }
+    }] : []),
+    ...(SHIPSTATION_API_KEY ? [{
+      resolve: "@medusajs/medusa/fulfillment",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/fulfillment-manual",
+            id: "manual",
+          },
+          {
+            resolve: "./src/modules/shipstation",
+            id: "shipstation",
+            options: {
+              api_key: process.env.SHIPSTATION_API_KEY,
+            },
+          },
+        ],
+      },
     }] : [])
   ],
   plugins: []

@@ -99,6 +99,12 @@ export const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 export const MEILISEARCH_HOST = process.env.MEILISEARCH_HOST;
 export const MEILISEARCH_API_KEY = process.env.MEILISEARCH_API_KEY;
 
+
+/**
+ * (Optional) ShipStation Fulfillment
+ */
+export const SHIPSTATION_API_KEY = process.env.SHIPSTATION_API_KEY
+
 /**
  * Worker mode
  */
