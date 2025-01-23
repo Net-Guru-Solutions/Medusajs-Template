@@ -22,7 +22,7 @@ export default async function Home({
   if (!collections || !region) {
     return null
   }
-
+ console.log(collections)
   return (
     <>
       <Hero />
