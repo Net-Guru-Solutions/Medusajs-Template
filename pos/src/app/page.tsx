@@ -1,14 +1,46 @@
-import Image from "next/image";
+"use client"
+
+import { products as initialProducts, customers } from "@/lib/data/mock";
+import CustomersView from "@/components/customers-view";
+import InventoryView from "@/components/inventory-view";
+import { SiteHeader } from "@/components/navigation";
+import type { CartItem, Product } from "../types";
+import POSView from "@/components/pos-view";
+import { useState } from "react";
 
 export default function Home() {
+  const [cart, setCart] = useState<CartItem[]>([])
+  const [activeTab, setActiveTab] = useState<"pos" | "customers" | "inventory">("pos")
+  const [products, setProducts] = useState<Product[]>(initialProducts)
+
+  const addToCart = (productId: string) => {
+    const product = products.find((p) => p.id === productId)
+    if (!product) return
+
+    setCart((prev) => {
+      const existingItem = prev.find((item) => item.product.id === productId)
+      if (existingItem) {
+        return prev.map((item) => (item.product.id === productId ? { ...item, quantity: item.quantity + 1 } : item))
+      }
+      return [...prev, { product, quantity: 1 }]
+    })
+  }
+
+  const updateProductStock = (productId: string, newStock: number) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) => (product.id === productId ? { ...product, stock: newStock } : product)),
+    )
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1>Hello World</h1>
+    <div className="min-h-screen bg-background">
+      <SiteHeader activeTab={activeTab} setActiveTab={setActiveTab} />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {activeTab === "pos" && <POSView cart={cart} addToCart={addToCart} setCart={setCart} products={products} />}
+        {activeTab === "customers" && <CustomersView customers={customers} />}
+        {activeTab === "inventory" && <InventoryView products={products} updateProductStock={updateProductStock} />}
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <h2>Hello World</h2>
-      </footer>
     </div>
-  );
+  )
 }
+
