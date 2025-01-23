@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className=" mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === "pos" && <POSView cart={cart} addToCart={addToCart} setCart={setCart} products={products} />}
         {activeTab === "customers" && <CustomersView customers={customers} />}
         {activeTab === "inventory" && <InventoryView products={products} updateProductStock={updateProductStock} />}
