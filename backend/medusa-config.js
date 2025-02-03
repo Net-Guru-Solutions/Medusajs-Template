@@ -166,7 +166,12 @@ const medusaConfig = {
       },
     }] : [])
   ],
-  plugins: []
+  plugins: [
+    {
+      resolve: "medusa-plugin-wishlist",
+      options: {}
+    }
+  ]
 };
 
 console.log(JSON.stringify(medusaConfig, null, 2));
